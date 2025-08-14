@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Liên hệ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="lh-body">
+
+  <div id="popup" class="lh-popup">Đã gửi liên hệ thành công!</div>
+
+  <div class="lh-container">
+    <h2>Liên hệ với chúng tôi</h2>
+    <p class="lh-intro">Công ty D chuyên thiết kế website, phần mềm và giải pháp công nghệ. Mọi thắc mắc, xin vui lòng liên hệ với chúng tôi qua form bên dưới.</p>
+
+    <div class="lh-form-map">
+      <div class="lh-contact-form">
+        <form onsubmit="submitContact(event)">
+          <input type="text" id="name" placeholder="Họ và tên" required>
+          <input type="email" id="email" placeholder="Email" required>
+          <textarea id="message" rows="5" placeholder="Nội dung liên hệ" required></textarea>
+          <button type="submit">Gửi liên hệ</button>
+        </form>
+      </div>
+      <div class="lh-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.36754493057!2d106.78287817481853!3d10.85956695747508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175272f84c3d4e5%3A0xa4c10cfac0c1a1d7!2zQ-G7rWEgdmnhu4d0IENoxqFpIE5ow6AgLSDEkMOgIFRo4bqpbmggVGjhuqVjIFRQLg!5e0!3m2!1svi!2s!4v1718967298455!5m2!1svi!2s"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+  <script>
+    function submitContact(event) {
+      event.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+      if (!name || !email || !message) return;
+      const existing = JSON.parse(localStorage.getItem("contacts") || "[]");
+      existing.push({ name, email, message, time: new Date().toLocaleString() });
+      localStorage.setItem("contacts", JSON.stringify(existing));
+      document.querySelector("form").reset();
+      const popup = document.getElementById("popup");
+      popup.classList.add("show");
+      setTimeout(() => popup.classList.remove("show"), 3000);
+    }
+  </script>
+
+</body>
+</html>

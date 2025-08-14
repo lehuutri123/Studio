@@ -1,0 +1,962 @@
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(to right, #f0f4f8, #d9e2ec);
+  color: #333;
+}
+
+.qlda-container {
+  max-width: 400px;
+  margin: 80px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Input & button */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 10px 0 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px 20px;
+  background: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #005fa3;
+}
+
+/* Bảng dự án */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #0077cc;
+  color: white;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+.actions button {
+  margin-right: 8px;
+  background-color: #28a745;
+}
+
+.actions .edit {
+  background-color: #ffc107;
+}
+
+.actions .delete {
+  background-color: #dc3545;
+}
+
+
+
+body.lh-body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg, #89f7fe, #66a6ff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.lh-container {
+  background: white;
+  width: 90%;
+  max-width: 1000px;
+  margin-top: 50px;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  animation: lh-fadeIn 1s ease-in-out;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes lh-fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.lh-container h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.lh-container .lh-intro {
+  text-align: center;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.lh-form-map {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.lh-contact-form {
+  flex: 1;
+  min-width: 300px;
+}
+
+.lh-contact-form input,
+.lh-contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: border 0.3s ease;
+}
+
+.lh-contact-form input:focus,
+.lh-contact-form textarea:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+.lh-contact-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.lh-contact-form button:hover {
+  background-color: #45a049;
+}
+
+.lh-map {
+  flex: 1;
+  min-width: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 100%;
+}
+
+.lh-map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+@media (max-width: 768px) {
+  .lh-form-map {
+    flex-direction: column;
+  }
+}
+
+.lh-popup {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+}
+
+.lh-popup.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+body { font-family: Arial, sans-serif; margin: 0; padding: 0; 
+  }
+header { background: #333; color: #fff;}
+nav a { color: white; margin: 0 10px; text-decoration: none; }
+.banner {
+  background: url('banner.jpg') center/cover no-repeat;
+  height: 300px;
+}
+.section { padding: 20px; }
+.projects, .services { display: flex; gap: 20px; flex-wrap: wrap; }
+.card {
+  flex: 1 1 30%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px ;
+}
+footer { background: #222; color: #fff; text-align: center; padding: 20px; }
+form input, form textarea { display: block; width: 100%; margin-bottom: 10px; padding: 8px; }
+form button { padding: 10px 20px; }
+      :root {
+    --primary-color: #2c3e50;
+    --secondary-color: #34495e;
+    --accent-color: #2980b9;
+    --bg-color: #dbd2d2;
+    --text-color: #333;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+header {
+    position: relative;
+    background-color: var(--primary-color);
+    color: white;
+    height: 200px;
+    padding: 0px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+nav {
+    background-color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 15px 0;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+nav a:hover {
+    color: var(--accent-color);
+}
+section {
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 28px;
+}
+
+.banner {
+    width: 100%;
+    padding: 10px 30px
+}
+
+.banner img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(235, 16, 16, 0.2);
+}
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+.card {
+    background: rgb(202, 193, 193);
+    width: 320px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card .content {
+    padding: 20px;
+}
+.card h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 20px auto;
+}
+form input,
+form textarea {
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+form button {
+    padding: 12px;
+    background: var(--accent-color);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+form button:hover {
+    background: #1c6ea4;
+}
+iframe {
+    border: none;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+}
+.logo {
+  position: absolute;
+  width: 150px;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 50px;
+}
+body.gt-body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background: linear-gradient(120deg, #fdfbfb, #ebedee);
+  min-height: 100vh;
+  padding: 40px 20px;
+  position: relative;
+}
+
+body.gt-body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 200%;
+  height: 200%;
+  background: url('https://www.transparenttextures.com/patterns/diagmonds.png');
+  opacity: 0.07;
+  z-index: -1;
+  animation: gt-moveBg 30s linear infinite;
+}
+
+@keyframes gt-moveBg {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-50%, -50%); }
+}
+
+.gt-container {
+  max-width: 1000px;
+  margin: auto;
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  animation: gt-fadeIn 1s ease;
+}
+
+@keyframes gt-fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.gt-container h1, .gt-container h2 {
+  color: #2c3e50;
+  text-align: center;
+}
+
+.gt-container p, .gt-container ul {
+  color: #444;
+  line-height: 1.7;
+}
+
+.gt-section {
+  margin-bottom: 30px;
+  margin: 20px 0;
+}
+
+.gt-container ul {
+  padding-left: 20px;
+}
+
+.gt-image {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.gt-image img {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+@media (max-width: 600px) {
+  .gt-image img {
+    width: 100%;
+  }
+}
+.pj-body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(120deg, #f0fdfd, #ffffff);
+  margin: 0;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.pjj-body::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: url('https://www.transparenttextures.com/patterns/symphony.png');
+  opacity: 0.05;
+  animation: moveBg 40s linear infinite;
+  z-index: -1;
+}
+
+@keyframes moveBg {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
+}
+
+.pjj-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  background: #fff;
+  padding: 30px;
+  border-radius: 40px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  width: 500px;
+  z-index: 1;
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pjj-container h2 {
+  text-align: center;
+  color: #00695c;
+  margin-bottom: 20px;
+}
+
+.pjj-container input,
+.pjj-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.pjj-container button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #00796b;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.pjj-container button:hover {
+  background-color: #004d40;
+}
+
+.pjj-project-list {
+  margin-top: 20px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.project-item {
+  background-color: #f0fdfa;
+  border: 1px solid #b2dfdb;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.project-item img {
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+#ql-lienhe {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #fdfbfb, #ebedee);
+  margin: 0;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+#ql-lienhe .ql-lh-container {
+  background: white;
+  width: 90%;
+  max-width: 900px;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  animation: ql-lh-fadeIn 0.6s ease;
+}
+
+@keyframes ql-lh-fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#ql-lienhe h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+#ql-lienhe .ql-lh-item {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  position: relative;
+}
+
+#ql-lienhe .ql-lh-item strong {
+  display: block;
+  font-size: 16px;
+  color: #333;
+}
+
+#ql-lienhe .ql-lh-item small {
+  color: #777;
+}
+
+#ql-lienhe .ql-lh-item p {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+#ql-lienhe .ql-lh-item button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #e74c3c;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#ql-lienhe .ql-lh-item button:hover {
+  background-color: #c0392b;
+}
+
+#ql-lienhe .ql-lh-clear-btn {
+  margin-top: 10px;
+  display: block;
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#ql-lienhe .ql-lh-clear-btn:hover {
+  background-color: #333;
+}
+
+#ql-lienhe .ql-lh-empty {
+  text-align: center;
+  color: #666;
+  margin-top: 20px;
+}
+
+body.qlda-body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+body.qlda-body::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: url('https://www.transparenttextures.com/patterns/diagmonds.png');
+  opacity: 0.08;
+  animation: qlda-moveBg 30s linear infinite;
+}
+
+@keyframes qlda-moveBg {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
+}
+
+.qlda-container {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: 500px;
+  z-index: 1;
+  animation: qlda-fadeIn 1s ease;
+}
+
+@keyframes qlda-fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.qlda-container h2 {
+  text-align: center;
+  color: #333;
+}
+
+.qlda-container input,
+.qlda-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.qlda-container button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.qlda-container button:hover {
+  background-color: #45a049;
+}
+
+.qlda-project-list {
+  margin-top: 20px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.qlda-project-item {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+}
+
+.qlda-project-item img {
+  width: 100%;
+  max-height: 150px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-top: 6px;
+}
+body.lh-body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg, #89f7fe, #66a6ff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.lh-container {
+  background: white;
+  width: 90%;
+  max-width: 1000px;
+  margin-top: 50px;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  animation: lh-fadeIn 1s ease-in-out;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes lh-fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.lh-container h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.lh-container .lh-intro {
+  text-align: center;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.lh-form-map {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.lh-contact-form {
+  flex: 1;
+  min-width: 300px;
+}
+
+.lh-contact-form input,
+.lh-contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: border 0.3s ease;
+}
+
+.lh-contact-form input:focus,
+.lh-contact-form textarea:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+.lh-contact-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.lh-contact-form button:hover {
+  background-color: #45a049;
+}
+
+.lh-map {
+  flex: 1;
+  min-width: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 100%;
+}
+
+.lh-map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+@media (max-width: 768px) {
+  .lh-form-map {
+    flex-direction: column;
+  }
+}
+
+.lh-popup {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+}
+
+.lh-popup.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+body.dnqt-body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(120deg, #74ebd5, #ACB6E5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+body.login-page, html.login-page {
+    margin: 0;
+    padding: 150px;
+    height: 100%;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #dfe9f3 0%, #ffffff 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    background: white;
+    padding: 60px 20px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    width: 450px;
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: #23a6d5;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.login-container button:hover {
+    background-color: #1c87c9;
+}
+
+.login-container #toggle-msg {
+    margin-top: 60px;
+    font-size: 15px;
+    color: #333;
+}
+
+.login-container #toggle-msg a {
+    color: #23a6d5;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-container #message {
+    margin-top: 100px;
+    font-size: 16px;
+}

@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm Dự Án Mới - Quản Trị</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- CSS đã được nhúng trực tiếp vào đây -->
+    <style>
+        /* Import Google Fonts for a modern, clean look */
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary-color: #007bff; /* Vibrant Blue */
+            --primary-dark: #0056b3;
+            --accent-color: #20c997; /* Fresh Teal/Green */
+            --accent-dark: #1aa07f;
+            --dark-bg: #1a202c; /* Deeper, richer dark background */
+            --light-bg-gradient-start: #f5f7fa; /* Very light, clean start */
+            --light-bg-gradient-end: #e0e6ee; /* Slightly darker end */
+            --text-color-dark: #2d3748; /* Darker text for readability */
+            --text-color-light: #edf2f7; /* Light text for dark backgrounds */
+            --card-bg: #ffffff;
+            --border-radius-xl: 1.25rem; /* Extra large border radius */
+            --border-radius-lg: 0.8rem;
+            --border-radius-sm: 0.5rem;
+            --box-shadow-subtle: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.08); /* Lighter, broader shadow */
+            --box-shadow-elevated: 0 1rem 2.5rem rgba(0, 0, 0, 0.15); /* More pronounced shadow */
+            --transition-speed: 0.3s;
+            --transition-ease: cubic-bezier(0.25, 0.8, 0.25, 1); /* Material Design-like ease */
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif; /* Changed to Montserrat for body */
+            line-height: 1.8;
+            color: var(--text-color-dark);
+            /* Modern, subtle gradient background with a hint of texture */
+            background: linear-gradient(135deg, var(--light-bg-gradient-start) 0%, var(--light-bg-gradient-end) 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'IBM Plex Sans', sans-serif;
+            color: var(--text-color-dark);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        /* --- Header Styling --- */
+        header {
+            background: var(--dark-bg);
+            color: var(--text-color-light);
+            padding: 3rem 0; /* More padding for grandeur */
+            text-align: center;
+            box-shadow: var(--box-shadow-elevated);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.8rem; /* More space */
+            position: relative;
+            overflow: hidden;
+            border-bottom-left-radius: var(--border-radius-xl); /* Rounded bottom corners */
+            border-bottom-right-radius: var(--border-radius-xl);
+            animation: fadeInDown 0.8s var(--transition-ease); /* Fade in from top */
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Dynamic background pattern/effect for 4.0 feel */
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 20% 20%, rgba(0, 123, 255, 0.2) 0%, transparent 30%),
+                        radial-gradient(circle at 80% 80%, rgba(32, 201, 151, 0.2) 0%, transparent 30%);
+            opacity: 0.8;
+            z-index: 0;
+            animation: headerBgPan 20s infinite alternate ease-in-out; /* Slower, panning animation */
+        }
+
+        @keyframes headerBgPan {
+            from {
+                transform: translate(0, 0);
+            }
+            to {
+                transform: translate(-10%, -10%);
+            }
+        }
+
+        header .logo {
+            width: 120px; /* Even larger logo */
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid var(--accent-color); /* Thicker accent border */
+            box-shadow: 0 0 30px rgba(32, 201, 151, 0.8), 0 0 50px rgba(32, 201, 151, 0.5); /* Stronger, layered glow */
+            position: relative;
+            z-index: 1;
+            transition: transform var(--transition-speed) var(--transition-ease);
+        }
+
+        header .logo:hover {
+            transform: scale(1.1); /* More pronounced scale on hover */
+        }
+
+        header .text-center {
+            position: relative;
+            z-index: 1;
+        }
+
+        header h1 {
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            font-size: 3.8rem; /* Even larger title */
+            text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6); /* Stronger, deeper shadow */
+            letter-spacing: 0.1rem; /* More spacing */
+            transition: color var(--transition-speed) var(--transition-ease);
+        }
+
+        header h1:hover {
+            color: #4df0c3; /* Brighter accent on hover */
+        }
+
+        header p {
+            font-size: 1.4rem; /* Larger subtitle */
+            color: rgba(255, 255, 255, 0.95); /* Almost fully opaque */
+            font-weight: 300;
+            letter-spacing: 0.02rem;
+        }
+
+        /* --- Navigation Styling --- */
+        nav {
+            background: linear-gradient(to right, var(--primary-color), var(--primary-dark)); /* Gradient nav background */
+            text-align: center;
+            padding: 1.5rem 0; /* More padding */
+            box-shadow: 0 0.8rem 1.8rem rgba(0, 0, 0, 0.25); /* Deeper shadow */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 5px solid var(--accent-color); /* Thicker accent border */
+            animation: slideInDown 0.8s var(--transition-ease) 0.2s forwards; /* Delayed slide in */
+            opacity: 0; /* Start hidden for animation */
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        nav a {
+            color: var(--text-color-light);
+            text-decoration: none;
+            padding: 1.2rem 2.5rem; /* More padding */
+            font-weight: 600;
+            transition: all var(--transition-speed) var(--transition-ease);
+            border-radius: var(--border-radius-lg); /* Larger radius for buttons */
+            margin: 0 1rem; /* More margin */
+            display: inline-block;
+            letter-spacing: 0.04rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.15); /* More visible shine */
+            transition: left 0.4s ease-out;
+            z-index: -1;
+        }
+
+        nav a:hover::before {
+            left: 0;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            background-color: var(--primary-dark); /* Darker shade on hover */
+            transform: translateY(-5px) scale(1.02); /* More pronounced lift and slight scale */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Deeper shadow */
+            color: white;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Subtle text glow */
+        }
+
+        /* --- Main Content Area --- */
+        main {
+            flex: 1;
+            padding-top: 5rem; /* More space below sticky nav */
+            padding-bottom: 5rem;
+        }
+
+        .card {
+            border: none;
+            border-radius: var(--border-radius-xl); /* Extra large border radius */
+            box-shadow: var(--box-shadow-elevated); /* More prominent shadow */
+            transition: transform 0.4s var(--transition-ease), box-shadow 0.4s var(--transition-ease);
+            background-color: var(--card-bg);
+            overflow: hidden; /* Ensure rounded corners for header/body */
+            position: relative; /* For subtle background effects */
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0, 123, 255, 0.02), transparent 50%, rgba(32, 201, 151, 0.02));
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .card:hover {
+            transform: translateY(-12px) scale(1.01); /* Even more pronounced lift and slight scale */
+            box-shadow: 0 1.5rem 3.5rem rgba(0, 0, 0, 0.25); /* Deeper, broader shadow on hover */
+        }
+
+        .card-header {
+            background: linear-gradient(to right, var(--primary-color), var(--primary-dark)); /* Gradient header */
+            color: var(--text-color-light) !important;
+            font-weight: 700;
+            font-size: 2.5rem; /* Larger header text */
+            padding: 2.5rem; /* More padding */
+            border-bottom: none;
+            border-top-left-radius: var(--border-radius-xl) !important;
+            border-top-right-radius: var(--border-radius-xl) !important;
+            letter-spacing: 0.05rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 7px; /* Thicker accent line */
+            background: linear-gradient(to right, var(--accent-color), var(--accent-dark)); /* Gradient accent line */
+            opacity: 0.9;
+        }
+
+        .card-body {
+            padding: 3rem !important; /* More internal padding */
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-label {
+            font-size: 1.2rem; /* Larger label */
+            color: var(--text-color-dark);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            transition: color var(--transition-speed) var(--transition-ease);
+        }
+
+        .form-label:hover {
+            color: var(--primary-color); /* Primary color on hover */
+        }
+
+        .form-control, .form-select {
+            border-radius: var(--border-radius-sm);
+            border: 1px solid #cdd4df;
+            padding: 1rem 1.3rem; /* More padding */
+            font-size: 1.15rem; /* Larger font */
+            transition: all var(--transition-speed) var(--transition-ease);
+            background-color: #fcfdff;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05); /* Subtle inner shadow */
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.4rem rgba(0, 123, 255, 0.4), inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Larger, more prominent focus ring */
+            outline: none;
+            background-color: white;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 200px; /* Even taller textarea */
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary-color), var(--primary-dark)); /* Gradient button */
+            border: none; /* Remove default border */
+            padding: 1.2rem 3rem; /* More padding */
+            font-size: 1.5rem; /* Larger font */
+            font-weight: 600;
+            border-radius: var(--border-radius-lg); /* Larger radius */
+            transition: all 0.4s var(--transition-ease);
+            box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4); /* Deeper shadow */
+            letter-spacing: 0.07rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-transform: uppercase; /* Uppercase text */
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -120%; /* Start further left */
+            width: 50%; /* Shorter shine */
+            height: 100%;
+            background: rgba(255, 255, 255, 0.4); /* Brighter shine */
+            transform: skewX(-20deg); /* Skewed shine */
+            transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+            z-index: -1;
+        }
+
+        .btn-primary:hover::before {
+            left: 120%; /* End further right */
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(45deg, var(--primary-dark), var(--primary-color)); /* Reverse gradient on hover */
+            transform: translateY(-7px) scale(1.02); /* Even more pronounced lift and slight scale */
+            box-shadow: 0 10px 25px rgba(0, 123, 255, 0.6); /* Stronger, broader shadow */
+            color: white;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.7); /* More prominent text glow */
+        }
+
+        /* --- Footer Styling --- */
+        footer {
+            background: var(--dark-bg);
+            color: var(--text-color-light);
+            padding: 3rem 0; /* More padding */
+            margin-top: auto;
+            box-shadow: 0 -0.8rem 1.8rem rgba(0, 0, 0, 0.25);
+            border-top: 5px solid var(--accent-color); /* Thicker accent border */
+            border-top-left-radius: var(--border-radius-xl); /* Rounded top corners */
+            border-top-right-radius: var(--border-radius-xl);
+            animation: fadeInUp 0.8s var(--transition-ease) 0.4s forwards; /* Delayed fade in from bottom */
+            opacity: 0; /* Start hidden for animation */
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        footer p {
+            margin-bottom: 0;
+            font-size: 1.1rem; /* Slightly larger font */
+            color: rgba(255, 255, 255, 0.9); /* More opaque */
+            font-weight: 300;
+            letter-spacing: 0.01rem;
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 992px) {
+            header {
+                padding: 2rem 0;
+                border-bottom-left-radius: var(--border-radius-lg);
+                border-bottom-right-radius: var(--border-radius-lg);
+            }
+            header .logo {
+                width: 100px;
+                height: 100px;
+            }
+            header h1 {
+                font-size: 3rem;
+            }
+            header p {
+                font-size: 1.2rem;
+            }
+            nav {
+                padding: 1rem 0;
+                border-bottom: 4px solid var(--accent-color);
+            }
+            nav a {
+                padding: 0.9rem 1.8rem;
+                margin: 0 0.6rem;
+                font-size: 1rem;
+            }
+            main {
+                padding-top: 4rem;
+                padding-bottom: 4rem;
+            }
+            .card {
+                border-radius: var(--border-radius-lg);
+            }
+            .card-header {
+                font-size: 2.2rem;
+                padding: 2rem;
+                border-top-left-radius: var(--border-radius-lg) !important;
+                border-top-right-radius: var(--border-radius-lg) !important;
+            }
+            .card-body {
+                padding: 2.5rem !important;
+            }
+            .form-label {
+                font-size: 1.1rem;
+            }
+            .form-control, .form-select {
+                padding: 0.9rem 1.1rem;
+                font-size: 1.05rem;
+            }
+            textarea.form-control {
+                min-height: 160px;
+            }
+            .btn-primary {
+                font-size: 1.3rem;
+                padding: 1.1rem 2.5rem;
+            }
+            footer {
+                padding: 2rem 0;
+                border-top-left-radius: var(--border-radius-lg);
+                border-top-right-radius: var(--border-radius-lg);
+            }
+            footer p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem 0;
+            }
+            header .logo {
+                width: 80px;
+                height: 80px;
+            }
+            header h1 {
+                font-size: 2.5rem;
+            }
+            header p {
+                font-size: 1.1rem;
+            }
+            nav {
+                flex-direction: column;
+                padding: 0.8rem;
+            }
+            nav a {
+                display: block;
+                margin: 0.6rem auto;
+                width: calc(100% - 2rem);
+                font-size: 1rem;
+            }
+            .card-body {
+                padding: 2rem !important;
+            }
+            .btn-primary {
+                font-size: 1.2rem;
+                padding: 1rem 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            main.container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+            .card-header {
+                font-size: 1.8rem;
+                padding: 1.8rem;
+            }
+            .form-label {
+                font-size: 1.05rem;
+            }
+            .form-control, .form-select {
+                padding: 0.8rem 1rem;
+                font-size: 0.95rem;
+            }
+            textarea.form-control {
+                min-height: 140px;
+            }
+            footer {
+                padding: 1.8rem 0;
+            }
+            footer p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img class="logo" src="./assests/img/logo.jpg" alt="Logo Studio">
+        <div class="text-center">
+            <h1>STUDIO TRANG TRÍ NỘI THẤT</h1>
+            <p>Khơi nguồn cảm hứng không gian sống</p>
+        </div>
+    </header>
+
+    <nav>
+        <a href="trangchu.html"><strong>TRANG CHỦ</strong></a>
+        <a href="GioiThieu.html"><strong>GIỚI THIỆU</strong></a>
+        <a href="TrangDuAn.php"><strong>DỰ ÁN</strong></a>
+        <a href="ThemDuAn.html"><strong>THÊM DỰ ÁN TỪ NGƯỜI DÙNG</strong></a>
+        <a href="lienhe.html"><strong>LIÊN HỆ</strong></a>
+    </nav>
+
+    <main class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h2 class="mb-0">THÊM DỰ ÁN MỚI</h2>
+                    </div>
+                    <div class="card-body p-4">
+                        <form action="backend/add_project.php" method="POST">
+                            <div class="mb-3">
+                                <label for="ten_du_an" class="form-label fw-bold">Tên Dự Án:</label>
+                                <input type="text" class="form-control" id="ten_du_an" name="ten_du_an" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="mo_ta" class="form-label fw-bold">Mô Tả Chi Tiết:</label>
+                                <textarea class="form-control" id="mo_ta" name="mo_ta" rows="5" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="hinh_anh_url" class="form-label fw-bold">URL Hình Ảnh:</label>
+                                <input type="url" class="form-control" id="hinh_anh_url" name="hinh_anh_url"
+                                    placeholder="https://example.com/image.jpg" required>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="danh_muc" class="form-label fw-bold">Danh Mục:</label>
+                                    <select class="form-select" id="danh_muc" name="danh_muc" required>
+                                        <option value="" selected disabled>-- Chọn danh mục --</option>
+                                        <option value="Biệt Thự">Biệt Thự</option>
+                                        <option value="Căn Hộ">Căn Hộ</option>
+                                        <option value="Văn Phòng">Văn Phòng</option>
+                                        <option value="Nhà Phố">Nhà Phố</option>
+                                        <option value="Showroom">Showroom</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="ngay_hoan_thanh" class="form-label fw-bold">Ngày Hoàn Thành (Tùy
+                                        chọn):</label>
+                                    <input type="date" class="form-control" id="ngay_hoan_thanh" name="ngay_hoan_thanh">
+                                </div>
+                            </div>
+                            <div class="d-grid"><button type="submit" class="btn btn-primary btn-lg">Lưu Dự Án</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center p-4 bg-dark text-white mt-5">
+        <p class="mb-0">© 2024 Design Studio. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>

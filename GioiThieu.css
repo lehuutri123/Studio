@@ -1,0 +1,81 @@
+
+/* File: gioithieu.css */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.7;
+    color: #555;
+}
+
+.section-padding {
+    padding: 80px 0;
+}
+
+.section-title {
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #333;
+    text-align: center;
+}
+
+.hero-section {
+    background: url('https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=2127&auto=format&fit=crop') no-repeat center center;
+    background-size: cover;
+    color: white;
+    padding: 120px 0;
+    text-align: center;
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.value-card {
+    text-align: center;
+    padding: 30px;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 100%;
+    background-color: #fff;
+}
+
+.value-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+.value-card .icon {
+    font-size: 40px;
+    color: #0d6efd;
+    margin-bottom: 20px;
+}
+
+.team-member img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 5px solid #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.team-member h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #343a40;
+    margin-bottom: 5px;
+}
+
+.team-member p {
+    font-style: italic;
+}
+
+.cta-section {
+    background-color: #0d6efd;
+    color: white;
+}

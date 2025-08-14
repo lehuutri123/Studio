@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản lý liên hệ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="ql-lienhe">
+    <div class="ql-lh-container">
+      <h2>Quản lý liên hệ khách hàng</h2>
+      <div id="contactList"></div>
+      <button class="ql-lh-clear-btn" onclick="clearAll()">Xóa tất cả liên hệ</button>
+    </div>
+  </div>
+
+  <script>
+    function loadContacts() {
+      const data = JSON.parse(localStorage.getItem("contacts") || "[]");
+      const list = document.getElementById("contactList");
+      list.innerHTML = '';
+
+      if (data.length === 0) {
+        list.innerHTML = '<p class="empty">Chưa có liên hệ nào được gửi.</p>';
+        return;
+      }
+
+      data.forEach((c, i) => {
+        const div = document.createElement("div");
+        div.className = "contact";
+        div.innerHTML = `
+          <strong>${c.name} <small>(${c.email})</small></strong>
+          <p>${c.message}</p>
+          <small>Gửi lúc: ${c.time}</small>
+          <button onclick="deleteContact(${i})">X</button>
+        `;
+        list.appendChild(div);
+      });
+    }
+
+    function deleteContact(index) {
+      const data = JSON.parse(localStorage.getItem("contacts") || "[]");
+      data.splice(index, 1);
+      localStorage.setItem("contacts", JSON.stringify(data));
+      loadContacts();
+    }
+
+    function clearAll() {
+      if (confirm("Bạn có chắc muốn xóa toàn bộ liên hệ?")) {
+        localStorage.removeItem("contacts");
+        loadContacts();
+      }
+    }
+
+    loadContacts();
+  </script>
+
+</body>
+</html>

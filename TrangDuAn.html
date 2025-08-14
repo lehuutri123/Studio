@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm Dự Án Mới - Quản Trị</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- CSS đã được nhúng trực tiếp vào đây -->
+    <style>
+        /* Import Google Fonts for a modern, clean look */
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600;700&family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary-color: #007bff; /* A vibrant blue */
+            --primary-dark: #0056b3;
+            --secondary-color: #6c757d;
+            --accent-color: #20c997; /* A fresh teal/green for accents */
+            --dark-bg: #1c2a38; /* Even darker, professional background for header/footer */
+            --light-bg-gradient-start: #eef2f6; /* Lighter gradient start */
+            --light-bg-gradient-end: #dce3ee; /* Lighter gradient end */
+            --text-color-dark: #34495e; /* Darker text for readability */
+            --text-color-light: #ecf0f1; /* Light text for dark backgrounds */
+            --card-bg: #ffffff;
+            --border-radius-lg: 1rem; /* Even larger border radius for softer look */
+            --border-radius-sm: 0.6rem; /* Slightly larger small radius */
+            --box-shadow-light: 0 0.8rem 2rem rgba(0, 0, 0, 0.12); /* More pronounced shadow */
+            --box-shadow-hover: 0 1.2rem 2.5rem rgba(0, 0, 0, 0.25); /* Deeper shadow on hover */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--text-color-dark);
+            /* Modern, slightly deeper gradient background with subtle noise */
+            background: linear-gradient(135deg, var(--light-bg-gradient-start) 0%, var(--light-bg-gradient-end) 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'IBM Plex Sans', sans-serif;
+            color: var(--text-color-dark);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        /* --- Header Styling --- */
+        header {
+            background: var(--dark-bg);
+            color: var(--text-color-light);
+            padding: 2.5rem 0; /* More padding */
+            text-align: center;
+            box-shadow: var(--box-shadow-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem; /* More space */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Enhanced background pattern/effect for 4.0 feel */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top left, rgba(0, 123, 255, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at bottom right, rgba(32, 201, 151, 0.15) 0%, transparent 50%);
+            opacity: 0.7;
+            z-index: 0;
+            animation: headerBgPulse 10s infinite alternate ease-in-out; /* Subtle animation */
+        }
+
+        @keyframes headerBgPulse {
+            from {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            to {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+        }
+
+        header .logo {
+            width: 100px; /* Larger logo */
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--accent-color); /* Thicker accent border */
+            box-shadow: 0 0 25px rgba(32, 201, 151, 0.7); /* Stronger glow effect */
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease-out; /* Smooth scale on hover */
+        }
+
+        header .logo:hover {
+            transform: scale(1.05);
+        }
+
+        header .text-center {
+            position: relative;
+            z-index: 1;
+        }
+
+        header h1 {
+            color: var(--accent-color);
+            margin-bottom: 0.75rem;
+            font-size: 3.2rem; /* Larger title */
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5); /* Stronger shadow */
+            letter-spacing: 0.07rem; /* More spacing */
+            transition: color 0.3s ease;
+        }
+
+        header h1:hover {
+            color: #2ee6b2; /* Slightly brighter accent on hover */
+        }
+
+        header p {
+            font-size: 1.3rem; /* Larger subtitle */
+            color: rgba(255, 255, 255, 0.9); /* More opaque */
+            font-weight: 300;
+        }
+
+        /* --- Navigation Styling --- */
+        nav {
+            background: var(--primary-color);
+            text-align: center;
+            padding: 1.2rem 0; /* More padding */
+            box-shadow: 0 0.6rem 1.2rem rgba(0, 0, 0, 0.2); /* Deeper shadow */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 4px solid var(--primary-dark); /* Thicker border */
+        }
+
+        nav a {
+            color: var(--text-color-light);
+            text-decoration: none;
+            padding: 1rem 2rem; /* More padding */
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            border-radius: var(--border-radius-sm);
+            margin: 0 0.8rem; /* More margin */
+            display: inline-block;
+            letter-spacing: 0.03rem;
+            position: relative;
+            overflow: hidden; /* For pseudo-element hover effect */
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: left 0.3s ease-out;
+            z-index: 0;
+        }
+
+        nav a:hover::before {
+            left: 0;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            background-color: var(--primary-dark);
+            transform: translateY(-4px); /* Even more pronounced lift */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Deeper shadow */
+            color: white;
+        }
+
+        /* --- Main Content Area --- */
+        main {
+            flex: 1;
+            padding-top: 4rem; /* More space below sticky nav */
+            padding-bottom: 4rem;
+        }
+
+        .card {
+            border: none;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--box-shadow-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: var(--card-bg); /* Ensure card has background */
+        }
+
+        .card:hover {
+            transform: translateY(-8px); /* Even more pronounced lift on hover */
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        .card-header {
+            background-color: var(--primary-color) !important;
+            color: var(--text-color-light) !important;
+            font-weight: 700;
+            font-size: 2.2rem; /* Larger header text */
+            padding: 2rem; /* More padding */
+            border-bottom: none;
+            border-top-left-radius: var(--border-radius-lg) !important;
+            border-top-right-radius: var(--border-radius-lg) !important;
+            letter-spacing: 0.04rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative; /* For subtle gradient effect */
+            overflow: hidden;
+        }
+
+        .card-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--accent-color), var(--primary-color));
+            opacity: 0.8;
+        }
+
+        .form-label {
+            font-size: 1.15rem; /* Slightly larger label */
+            color: var(--text-color-dark);
+            margin-bottom: 0.7rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .form-label:hover {
+            color: var(--primary-dark); /* Darker primary on hover */
+        }
+
+        .form-control, .form-select {
+            border-radius: var(--border-radius-sm);
+            border: 1px solid #cdd4df; /* Slightly softer border */
+            padding: 0.9rem 1.2rem; /* More padding */
+            font-size: 1.1rem; /* Larger font */
+            transition: all 0.3s ease;
+            background-color: #fcfdff;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.35rem rgba(0, 123, 255, 0.35); /* Larger, more prominent focus ring */
+            outline: none;
+            background-color: white;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 180px; /* Even taller textarea */
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 1.1rem 2.5rem; /* More padding */
+            font-size: 1.4rem; /* Larger font */
+            font-weight: 600;
+            border-radius: var(--border-radius-sm);
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 10px rgba(0, 123, 255, 0.35); /* Deeper shadow */
+            letter-spacing: 0.06rem; /* More spacing */
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); /* Shine effect */
+            z-index: -1;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-5px); /* Even more pronounced lift */
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.5); /* Stronger shadow */
+        }
+
+        /* --- Footer Styling --- */
+        footer {
+            background: var(--dark-bg);
+            color: var(--text-color-light);
+            padding: 2.5rem 0; /* More padding */
+            margin-top: auto;
+            box-shadow: 0 -0.6rem 1.2rem rgba(0, 0, 0, 0.2);
+            border-top: 4px solid var(--accent-color); /* Thicker accent border */
+        }
+
+        footer p {
+            margin-bottom: 0;
+            font-size: 1.05rem; /* Slightly larger font */
+            color: rgba(255, 255, 255, 0.85); /* More opaque */
+            font-weight: 300;
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 992px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            header p {
+                font-size: 1.15rem;
+            }
+            nav a {
+                padding: 0.8rem 1.5rem;
+                margin: 0 0.5rem;
+                font-size: 1rem;
+            }
+            .card-header {
+                font-size: 1.9rem;
+                padding: 1.75rem;
+            }
+            .btn-primary {
+                font-size: 1.25rem;
+                padding: 1rem 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 2rem 0;
+            }
+            header .logo {
+                width: 80px;
+                height: 80px;
+            }
+            header h1 {
+                font-size: 2.1rem;
+            }
+            header p {
+                font-size: 1.05rem;
+            }
+            nav {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            nav a {
+                display: block;
+                margin: 0.5rem auto;
+                width: calc(100% - 2rem);
+                font-size: 1.05rem;
+            }
+            .card-body {
+                padding: 2rem !important;
+            }
+            .btn-primary {
+                font-size: 1.15rem;
+                padding: 0.9rem 1.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            main.container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+                padding-top: 2.5rem;
+                padding-bottom: 2.5rem;
+            }
+            .card-header {
+                font-size: 1.7rem;
+                padding: 1.5rem;
+            }
+            .form-label {
+                font-size: 1.05rem;
+            }
+            .form-control, .form-select {
+                padding: 0.8rem 1rem;
+                font-size: 1rem;
+            }
+            footer {
+                padding: 2rem 0;
+            }
+            footer p {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img class="logo" src="./assests/img/logo.jpg" alt="Logo Studio">
+        <div class="text-center">
+            <h1>STUDIO TRANG TRÍ NỘI THẤT</h1>
+            <p>Khơi nguồn cảm hứng không gian sống</p>
+        </div>
+    </header>
+
+    <!-- Dán Menu Chuẩn vào đây -->
+    <nav>
+        <a href="trangchu.html"><strong>TRANG CHỦ</strong></a>
+        <a href="GioiThieu.html"><strong>GIỚI THIỆU</strong></a>
+        <a href="TrangDuAn.php"><strong>DỰ ÁN</strong></a>
+        <a href="ThemDuAn.html"><strong>QUẢN TRỊ</strong></a>
+        <a href="lienhe.html"><strong>LIÊN HỆ</strong></a>
+    </nav>
+
+    <main class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h2 class="mb-0">THÊM DỰ ÁN MỚI</h2>
+                    </div>
+                    <div class="card-body p-4">
+                        <form action="backend/add_project.php" method="POST">
+                            <div class="mb-3">
+                                <label for="ten_du_an" class="form-label fw-bold">Tên Dự Án:</label>
+                                <input type="text" class="form-control" id="ten_du_an" name="ten_du_an" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="mo_ta" class="form-label fw-bold">Mô Tả Chi Tiết:</label>
+                                <textarea class="form-control" id="mo_ta" name="mo_ta" rows="5" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="hinh_anh_url" class="form-label fw-bold">URL Hình Ảnh:</label>
+                                <input type="url" class="form-control" id="hinh_anh_url" name="hinh_anh_url"
+                                    placeholder="https://example.com/image.jpg" required>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="danh_muc" class="form-label fw-bold">Danh Mục:</label>
+                                    <select class="form-select" id="danh_muc" name="danh_muc" required>
+                                        <option value="" selected disabled>-- Chọn danh mục --</option>
+                                        <option value="Biệt Thự">Biệt Thự</option>
+                                        <option value="Căn Hộ">Căn Hộ</option>
+                                        <option value="Văn Phòng">Văn Phòng</option>
+                                        <option value="Nhà Phố">Nhà Phố</option>
+                                        <option value="Showroom">Showroom</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="ngay_hoan_thanh" class="form-label fw-bold">Ngày Hoàn Thành (Tùy
+                                        chọn):</label>
+                                    <input type="date" class="form-control" id="ngay_hoan_thanh" name="ngay_hoan_thanh">
+                                </div>
+                            </div>
+                            <div class="d-grid"><button type="submit" class="btn btn-primary btn-lg">Lưu Dự Án</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center p-4 bg-dark text-white mt-5">
+        <p class="mb-0">© 2024 Design Studio. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>

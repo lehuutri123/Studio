@@ -1,0 +1,504 @@
+<<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nội Thất Hiện Đại 4.0 | Thiết kế không gian sống tương lai</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .product-card:hover .product-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .product-overlay {
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .ar-preview {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .menu-item {
+            position: relative;
+        }
+        
+        .menu-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #4f46e5;
+            transition: width 0.3s ease;
+        }
+        
+        .menu-item:hover::after {
+            width: 100%;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-couch text-indigo-600 text-3xl mr-2"></i>
+                <span class="text-2xl font-bold text-gray-800">Nội Thất<span class="text-indigo-600">4.0</span></span>
+            </div>
+            
+           <nav class="hidden md:flex space-x-8">
+                <a href="trangchu.html" class="menu-item text-gray-700 hover:text-indigo-600 font-medium">TRANG CHỦ</a>
+                <a href="Gioithieu.html" class="menu-item text-gray-700 hover:text-indigo-600 font-medium">GIỚI THIỆU</a>
+                <a href="TrangDuAn.php" class="menu-item text-gray-700 hover:text-indigo-600 font-medium">DỰ ÁN</a>
+                <a href="TrangDuAn.html" class="menu-item text-gray-700 hover:text-indigo-600 font-medium">THÊM DỰ ÁN TỪ NGƯỜI DÙNG</a>
+                <a href="lienhe.html" calss= " menu- item text-gray-700 hover:text-indigo-600 fort-medium">LIÊN HỆ</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <button class="p-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="p-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200">
+                    <i class="fas fa-shopping-cart"></i>
+                </button>
+                <button class="md:hidden p-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center text-white">
+        <div class="container mx-auto px-4 py-20">
+            <div class="max-w-2xl">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">Không gian sống <span class="text-indigo-300">tương lai</span></h1>
+                <p class="text-xl md:text-2xl mb-8">Công nghệ 4.0 đem đến giải pháp nội thất thông minh, tiện nghi và đẳng cấp cho ngôi nhà của bạn</p>
+                <div class="flex flex-wrap gap-4">
+                    <button class="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-full font-medium transition duration-300 transform hover:scale-105">
+                        Khám phá ngay
+                    </button>
+                    <button class="px-8 py-3 bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 rounded-full font-medium transition duration-300 transform hover:scale-105">
+                        <i class="fas fa-play mr-2"></i> Xem demo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Nội Thất Thông Minh 4.0</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Công nghệ tiên phong kết hợp với thiết kế đẳng cấp, mang đến trải nghiệm sống hoàn hảo</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-8 rounded-xl hover:shadow-lg transition duration-300">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-robot text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Điều khiển thông minh</h3>
+                    <p class="text-gray-600">Kiểm soát toàn bộ ngôi nhà chỉ với một cú chạm trên điện thoại hoặc giọng nói</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl hover:shadow-lg transition duration-300">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-vr-cardboard text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Thiết kế AR/VR</h3>
+                    <p class="text-gray-600">Trải nghiệm không gian sống trong thực tế ảo trước khi quyết định</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl hover:shadow-lg transition duration-300">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-leaf text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Vật liệu bền vững</h3>
+                    <p class="text-gray-600">Sử dụng vật liệu thân thiện môi trường, an toàn cho sức khỏe</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AR Experience Section -->
+    <section class="py-16 ar-preview text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Trải nghiệm AR ngay tại nhà</h2>
+                    <p class="text-xl mb-8">Ứng dụng công nghệ thực tế tăng cường giúp bạn xem trước nội thất trong không gian thực tế của ngôi nhà</p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-indigo-300 mr-3 text-xl"></i>
+                            <span>Xem trước nội thất với kích thước thực tế</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-indigo-300 mr-3 text-xl"></i>
+                            <span>Thay đổi màu sắc, chất liệu ngay lập tức</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-indigo-300 mr-3 text-xl"></i>
+                            <span>Lưu và chia sẻ thiết kế với chuyên gia</span>
+                        </li>
+                    </ul>
+                    <button class="px-8 py-3 bg-white text-indigo-600 hover:bg-gray-100 rounded-full font-medium transition duration-300 transform hover:scale-105">
+                        <i class="fas fa-download mr-2"></i> Tải ứng dụng
+                    </button>
+                </div>
+                <div class="md:w-1/2 relative">
+                    <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="AR Experience" class="rounded-xl shadow-2xl floating">
+                    <div class="absolute -bottom-5 -right-5 bg-indigo-800 p-4 rounded-xl shadow-lg">
+                        <i class="fas fa-mobile-alt text-4xl text-white"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Showcase -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Bộ sưu tập nội thất 4.0</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Những thiết kế tiên phong kết hợp công nghệ và thẩm mỹ</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md product-card">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Smart Sofa" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70 product-overlay flex flex-col justify-end p-6">
+                            <h3 class="text-white text-xl font-bold mb-2">Ghế sofa thông minh</h3>
+                            <p class="text-gray-300 mb-4">Tích hợp sạc không dây, điều chỉnh nhiệt độ và massage</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-indigo-300 font-bold text-lg">12.990.000đ</span>
+                                <button class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-full text-white text-sm">
+                                    <i class="fas fa-shopping-cart mr-1"></i> Thêm vào giỏ
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md product-card">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Smart Table" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70 product-overlay flex flex-col justify-end p-6">
+                            <h3 class="text-white text-xl font-bold mb-2">Bàn làm việc AI</h3>
+                            <p class="text-gray-300 mb-4">Màn hình cảm ứng, điều chỉnh độ cao tự động, tích hợp trợ lý ảo</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-indigo-300 font-bold text-lg">8.990.000đ</span>
+                                <button class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-full text-white text-sm">
+                                    <i class="fas fa-shopping-cart mr-1"></i> Thêm vào giỏ
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md product-card">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1758&q=80" alt="Smart Bed" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70 product-overlay flex flex-col justify-end p-6">
+                            <h3 class="text-white text-xl font-bold mb-2">Giường ngủ thông minh</h3>
+                            <p class="text-gray-300 mb-4">Theo dõi giấc ngủ, điều chỉnh nhiệt độ, tích hợp loa và đèn ngủ</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-indigo-300 font-bold text-lg">22.990.000đ</span>
+                                <button class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-full text-white text-sm">
+                                    <i class="fas fa-shopping-cart mr-1"></i> Thêm vào giỏ
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="px-8 py-3 border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white rounded-full font-medium transition duration-300">
+                    Xem tất cả sản phẩm <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Smart Home Integration -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <img src="https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Smart Home" class="rounded-xl shadow-lg">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Tích hợp nhà thông minh</h2>
+                    <p class="text-xl text-gray-600 mb-8">Hệ thống nội thất 4.0 của chúng tôi có thể kết nối hoàn hảo với các thiết bị nhà thông minh phổ biến</p>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-home text-indigo-600"></i>
+                            </div>
+                            <span class="font-medium">Google Home</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fab fa-apple text-indigo-600"></i>
+                            </div>
+                            <span class="font-medium">Apple HomeKit</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fab fa-amazon text-indigo-600"></i>
+                            </div>
+                            <span class="font-medium">Amazon Alexa</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-microchip text-indigo-600"></i>
+                            </div>
+                            <span class="font-medium">Samsung SmartThings</span>
+                        </div>
+                    </div>
+                    
+                    <button class="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full font-medium transition duration-300">
+                        <i class="fas fa-book mr-2"></i> Hướng dẫn tích hợp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Khách hàng nói gì về chúng tôi</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Hàng nghìn gia đình đã tin tưởng lựa chọn giải pháp nội thất 4.0 của chúng tôi</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-md testimonial-card">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Chị Ngọc Anh</h4>
+                            <p class="text-gray-500 text-sm">Hà Nội</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"Tôi rất ấn tượng với hệ thống điều khiển thông minh. Giờ đây có thể kiểm soát toàn bộ nội thất chỉ bằng giọng nói."</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md testimonial-card">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Anh Minh Đức</h4>
+                            <p class="text-gray-500 text-sm">TP.HCM</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"Công nghệ AR giúp tôi hình dung rõ nội thất trong nhà trước khi mua. Tiết kiệm rất nhiều thời gian và chi phí."</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md testimonial-card">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Customer" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Chị Thu Hà</h4>
+                            <p class="text-gray-500 text-sm">Đà Nẵng</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"Thiết kế vừa hiện đại vừa tiện nghi. Đặc biệt là khả năng kết nối với các thiết bị nhà thông minh rất dễ dàng."</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-indigo-600 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Nhận bản tin công nghệ nội thất</h2>
+                <p class="text-xl mb-8">Đăng ký để nhận thông tin mới nhất về sản phẩm, công nghệ và ưu đãi đặc biệt</p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
+                    <input type="email" placeholder="Nhập email của bạn" class="flex-grow px-6 py-4 rounded-full text-gray-800 focus:outline-none">
+                    <button class="px-8 py-4 bg-indigo-800 hover:bg-indigo-900 rounded-full font-medium transition duration-300 whitespace-nowrap">
+                        Đăng ký ngay <i class="fas fa-paper-plane ml-2"></i>
+                    </button>
+                </div>
+                
+                <p class="text-sm mt-4 text-indigo-200">Chúng tôi cam kết không spam. Bạn có thể hủy đăng ký bất cứ lúc nào.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-couch text-indigo-500 text-3xl mr-2"></i>
+                        <span class="text-2xl font-bold">Nội Thất<span class="text-indigo-500">4.0</span></span>
+                    </div>
+                    <p class="mb-6 text-gray-400">Tiên phong trong giải pháp nội thất thông minh kết hợp công nghệ 4.0</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-indigo-600 rounded-full flex items-center justify-center transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-indigo-600 rounded-full flex items-center justify-center transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-indigo-600 rounded-full flex items-center justify-center transition duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-indigo-600 rounded-full flex items-center justify-center transition duration-300">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Sản phẩm</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Phòng khách thông minh</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Phòng ngủ công nghệ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Bếp hiện đại</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Văn phòng 4.0</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Phụ kiện thông minh</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Dịch vụ</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Thiết kế AR/VR</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Lắp đặt thông minh</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Bảo hành công nghệ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Nâng cấp phần mềm</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Tư vấn thiết kế</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Liên hệ</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-indigo-500 mt-1 mr-3"></i>
+                            <span class="text-gray-400">Tòa nhà Techcombank, 191 Bà Triệu, Hà Nội</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt text-indigo-500 mr-3"></i>
+                            <span class="text-gray-400">1900 1234</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-indigo-500 mr-3"></i>
+                            <span class="text-gray-400">support@noithat40.vn</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock text-indigo-500 mr-3"></i>
+                            <span class="text-gray-400">8:00 - 18:00 (T2 - CN)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 mb-4 md:mb-0">© 2023 Nội Thất 4.0. Bảo lưu mọi quyền.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-white transition duration-300">Điều khoản</a>
+                    <a href="#" class="text-gray-500 hover:text-white transition duration-300">Bảo mật</a>
+                    <a href="#" class="text-gray-500 hover:text-white transition duration-300">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Button -->
+    <div class="fixed bottom-8 right-8 z-50">
+        <div class="relative">
+            <button class="w-14 h-14 bg-indigo-600 hover:bg-indigo-700 rounded-full shadow-lg flex items-center justify-center text-white transition duration-300 transform hover:scale-110">
+                <i class="fas fa-comment-dots text-xl"></i>
+            </button>
+            <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center animate-ping"></span>
+        </div>
+    </div>
+
+    <script>
+        // Simple animation for product cards on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fadeIn');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.product-card, .testimonial-card').forEach(card => {
+                observer.observe(card);
+            });
+            
+            // Mobile menu toggle (simplified for demo)
+            document.querySelector('.fa-bars').parentElement.addEventListener('click', function() {
+                alert('Menu mobile sẽ hiển thị tại đây');
+            });
+        });
+    </script>
+</body>
+</html>
