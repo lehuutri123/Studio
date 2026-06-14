@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cac thuat toan sap xep</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            color: #222;
+            background: #f7f7f7;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        h1 {
+            margin-top: 0;
+            font-size: 28px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background: #eeeeee;
+        }
+
+        code {
+            font-size: 16px;
+        }
+
+        details {
+            margin-top: 8px;
+        }
+
+        summary {
+            cursor: pointer;
+            color: #0b5ed7;
+            font-weight: bold;
+        }
+
+        ol {
+            margin: 10px 0 0;
+            padding-left: 22px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            line-height: 1.45;
+        }
+
+        .mang {
+            display: block;
+            margin-top: 4px;
+            color: #7a2e0e;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Cac thuat toan sap xep</h1>
+        <p>Day ban dau: <code id="mang-ban-dau"></code></p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Thuat toan</th>
+                    <th>Ket qua</th>
+                    <th>Cac buoc sap xep</th>
+                </tr>
+            </thead>
+            <tbody id="ket-qua"></tbody>
+        </table>
+    </main>
+
+    <script>
+        const mangBanDau = [12, 8, 1, 15, 24, 67, 8, 53, 9];
+
+        function hienThiMang(mang) {
+            return `[${mang.join(', ')}]`;
+        }
+
+        function themBuoc(cacBuoc, noiDung, mang) {
+            cacBuoc.push(`${noiDung}<code class="mang">${hienThiMang(mang)}</code>`);
+        }
+
+        function selectionSort(mang) {
+            const a = [...mang];
+            const cacBuoc = [];
+
+            themBuoc(cacBuoc, 'Bat dau Selection Sort.', a);
+
+            for (let i = 0; i < a.length - 1; i++) {
+                let viTriNhoNhat = i;
+
+                for (let j = i + 1; j < a.length; j++) {
+                    if (a[j] < a[viTriNhoNhat]) {
+                        viTriNhoNhat = j;
+                    }
+                }
+
+                if (viTriNhoNhat !== i) {
+                    const giaTriDau = a[i];
+                    const giaTriNhoNhat = a[viTriNhoNhat];
+                    [a[i], a[viTriNhoNhat]] = [a[viTriNhoNhat], a[i]];
+                    themBuoc(
+                        cacBuoc,
+                        `Luot ${i + 1}: tim thay so nho nhat ${giaTriNhoNhat}, doi cho voi ${giaTriDau}.`,
+                        a
+                    );
+                } else {
+                    themBuoc(cacBuoc, `Luot ${i + 1}: vi tri ${i} da la nho nhat, khong can doi.`, a);
+                }
+            }
+
+            return { ketQua: a, cacBuoc };
+        }
+
+        function insertionSort(mang) {
+            const a = [...mang];
+            const cacBuoc = [];
+
+            themBuoc(cacBuoc, 'Bat dau Insertion Sort.', a);
+
+            for (let i = 1; i < a.length; i++) {
+                const x = a[i];
+                let j = i - 1;
+                let soLanDich = 0;
+
+                while (j >= 0 && a[j] > x) {
+                    a[j + 1] = a[j];
+                    j--;
+                    soLanDich++;
+                }
+
+                a[j + 1] = x;
+                themBuoc(
+                    cacBuoc,
+                    `Luot ${i}: lay ${x}, dich ${soLanDich} phan tu lon hon sang phai, chen vao vi tri ${j + 1}.`,
+                    a
+                );
+            }
+
+            return { ketQua: a, cacBuoc };
+        }
+
+        function bubbleSort(mang) {
+            const a = [...mang];
+            const cacBuoc = [];
+
+            themBuoc(cacBuoc, 'Bat dau Bubble Sort.', a);
+
+            for (let i = 0; i < a.length - 1; i++) {
+                let daDoiCho = false;
+
+                for (let j = 0; j < a.length - i - 1; j++) {
+                    if (a[j] > a[j + 1]) {
+                        const trai = a[j];
+                        const phai = a[j + 1];
+                        [a[j], a[j + 1]] = [a[j + 1], a[j]];
+                        daDoiCho = true;
+                        themBuoc(
+                            cacBuoc,
+                            `Luot ${i + 1}, so sanh vi tri ${j} va ${j + 1}: ${trai} > ${phai}, doi cho.`,
+                            a
+                        );
+                    }
+                }
+
+                if (!daDoiCho) {
+                    themBuoc(cacBuoc, `Luot ${i + 1}: khong co cap nao can doi, dung thuat toan.`, a);
+                    break;
+                }
+            }
+
+            return { ketQua: a, cacBuoc };
+        }
+
+        function quickSort(mang) {
+            const cacBuoc = [];
+
+            function sapXepNhanh(a, muc) {
+                if (a.length <= 1) {
+                    themBuoc(cacBuoc, `${'&nbsp;'.repeat(muc * 4)}Mang co ${a.length} phan tu, giu nguyen.`, a);
+                    return a;
+                }
+
+                const pivot = a[0];
+                const trai = [];
+                const phai = [];
+
+                for (let i = 1; i < a.length; i++) {
+                    if (a[i] <= pivot) {
+                        trai.push(a[i]);
+                    } else {
+                        phai.push(a[i]);
+                    }
+                }
+
+                themBuoc(
+                    cacBuoc,
+                    `${'&nbsp;'.repeat(muc * 4)}Chon pivot ${pivot}, chia trai ${hienThiMang(trai)}, phai ${hienThiMang(phai)}.`,
+                    a
+                );
+
+                const traiDaSapXep = sapXepNhanh(trai, muc + 1);
+                const phaiDaSapXep = sapXepNhanh(phai, muc + 1);
+                const ketQua = [...traiDaSapXep, pivot, ...phaiDaSapXep];
+
+                themBuoc(cacBuoc, `${'&nbsp;'.repeat(muc * 4)}Ghep trai + pivot + phai.`, ketQua);
+                return ketQua;
+            }
+
+            themBuoc(cacBuoc, 'Bat dau QuickSort.', mang);
+            return { ketQua: sapXepNhanh([...mang], 0), cacBuoc };
+        }
+
+        function pushDownMinHeap(a, first, last, cacBuoc, nhan) {
+            let r = first;
+
+            while (r * 2 + 1 <= last) {
+                const left = r * 2 + 1;
+                const right = left + 1;
+                let child = left;
+
+                if (right <= last && a[right] < a[left]) {
+                    child = right;
+                }
+
+                if (a[r] <= a[child]) {
+                    break;
+                }
+
+                const cha = a[r];
+                const con = a[child];
+                [a[r], a[child]] = [a[child], a[r]];
+                themBuoc(cacBuoc, `${nhan}: day ${cha} xuong, doi cho voi con nho hon ${con}.`, a);
+                r = child;
+            }
+        }
+
+        function heapSortGiamDan(mang) {
+            const a = [...mang];
+            const n = a.length;
+            const cacBuoc = [];
+
+            themBuoc(cacBuoc, 'Bat dau HeapSort giam dan bang min-heap.', a);
+
+            for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
+                pushDownMinHeap(a, i, n - 1, cacBuoc, `Tao heap tu nut ${i}`);
+                themBuoc(cacBuoc, `Sau khi heapify nut ${i}.`, a);
+            }
+
+            for (let i = n - 1; i > 0; i--) {
+                const nhoNhat = a[0];
+                [a[0], a[i]] = [a[i], a[0]];
+                themBuoc(cacBuoc, `Dua phan tu nho nhat ${nhoNhat} ve cuoi doan chua sap xep tai vi tri ${i}.`, a);
+                pushDownMinHeap(a, 0, i - 1, cacBuoc, `Khoi phuc heap trong doan 0..${i - 1}`);
+                themBuoc(cacBuoc, `Sau khi co dinh vi tri ${i}.`, a);
+            }
+
+            return { ketQua: a, cacBuoc };
+        }
+
+        const ketQua = [
+            ['Selection Sort tang dan', selectionSort(mangBanDau)],
+            ['Insertion Sort tang dan', insertionSort(mangBanDau)],
+            ['Bubble Sort tang dan', bubbleSort(mangBanDau)],
+            ['QuickSort tang dan', quickSort(mangBanDau)],
+            ['HeapSort giam dan', heapSortGiamDan(mangBanDau)],
+        ];
+
+        document.getElementById('mang-ban-dau').textContent = mangBanDau.join(', ');
+        document.getElementById('ket-qua').innerHTML = ketQua.map(([ten, duLieu]) => `
+            <tr>
+                <td>${ten}</td>
+                <td><code>${duLieu.ketQua.join(', ')}</code></td>
+                <td>
+                    <details open>
+                        <summary>Xem ${duLieu.cacBuoc.length} buoc</summary>
+                        <ol>
+                            ${duLieu.cacBuoc.map((buoc) => `<li>${buoc}</li>`).join('')}
+                        </ol>
+                    </details>
+                </td>
+            </tr>
+        `).join('');
+    </script>
+</body>
+</html>
